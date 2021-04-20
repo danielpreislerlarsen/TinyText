@@ -174,17 +174,17 @@ namespace UnitTests
         [Fact]
         public void HandleRandomlyGeneratedInputs()
         {
-                var inputProcessor = new InputProcessor();
-                var inputs = GenerateRandomInputs(numberOfInputs: 1000000);
+            var inputProcessor = new InputProcessor();
+            var inputs = GenerateRandomInputs(numberOfInputs: 1000000);
 
-                //Act
-                foreach (var input in inputs)
-                {
-                    inputProcessor.Process(input);
-                }
+            //Act
+            foreach (var input in inputs)
+            {
+                inputProcessor.Process(input);
+            }
 
-                var renderer = new DefaultRenderer();
-                renderer.RenderDocument(inputProcessor.GetOutput);
+            var renderer = new DefaultRenderer();
+            renderer.RenderDocument(inputProcessor.GetOutput);
         }
 
         private IEnumerable<InputTypes> GenerateRandomInputs(int numberOfInputs)
