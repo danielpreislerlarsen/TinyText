@@ -21,16 +21,16 @@ namespace TinyText.UndoActions
 
         public void Execute()
         {
-            var theLine = _document.TheOutput[_lineNumber];
+            var theLine = _document.Output[_lineNumber];
             theLine.RemoveAt(theLine.Count-1); //remove the inserted newline
 
-            var theNextLine = _document.TheOutput[_lineNumber + 1];
+            var theNextLine = _document.Output[_lineNumber + 1];
 
             theLine.AddRange(theNextLine);
 
-            _document.TheOutput[_lineNumber] = theLine;
+            _document.Output[_lineNumber] = theLine;
 
-            _document.TheOutput.RemoveAt(_lineNumber + 1);
+            _document.Output.RemoveAt(_lineNumber + 1);
 
             _document.CursorLineNumber = _lineNumber;
             _document.CursorPosition = _position;

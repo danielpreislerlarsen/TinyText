@@ -10,20 +10,22 @@ namespace TinyText.UndoActions
     {
         private readonly int _lineNumber;
         private readonly int _position;
-        private readonly List<List<OutputCharacters>> _theDocument;
+        private readonly Document _document;
 
-        public UndoInsertCharacter(int lineNumber, int position, List<List<OutputCharacters>> theDocument)
+        public UndoInsertCharacter(int lineNumber, int position, Document document)
         {
             _lineNumber = lineNumber;
             _position = position;
-            _theDocument = theDocument;
+            _document = document;
         }
 
         public void Execute()
         {
-            var theLine = _theDocument[_lineNumber];
+            var theLine = _document.Output[_lineNumber];
             theLine.RemoveAt(_position);
-            _theDocument[_lineNumber] = theLine;
+            _document.Output[_lineNumber] = theLine;
+            _document.CursorLineNumber = _lineNumber;
+            _document.CursorPosition = _position;
         }
     }
 }

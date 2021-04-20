@@ -21,14 +21,14 @@ namespace TinyText.UndoActions
 
         public void Execute()
         {
-            var curentLine = _document.TheOutput[_cursorLineNumber];
+            var curentLine = _document.Output[_cursorLineNumber];
             var newLine = curentLine.GetRange(0, _cursorPosition);
             newLine.Add(OutputCharacters.newline);
 
             var nextLine = curentLine.GetRange(_cursorPosition, curentLine.Count - _cursorPosition);
 
-            _document.TheOutput[_cursorLineNumber] = newLine;
-            _document.TheOutput.Insert(_cursorLineNumber + 1, nextLine);
+            _document.Output[_cursorLineNumber] = newLine;
+            _document.Output.Insert(_cursorLineNumber + 1, nextLine);
 
             _document.CursorLineNumber = _cursorLineNumber + 1;
             _document.CursorPosition = 0;

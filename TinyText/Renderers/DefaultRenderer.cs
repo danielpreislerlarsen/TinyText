@@ -6,8 +6,6 @@ namespace TinyText.Renderers
 {
     public class DefaultRenderer : IRenderer
     {
-        public static string Newline = "\r\n";
-
         public string RenderDocument(List<List<OutputCharacters>> output)
         {
             StringBuilder sb = new();
@@ -34,7 +32,7 @@ namespace TinyText.Renderers
                 case OutputCharacters.b:
                     return "b";
                 case OutputCharacters.newline:
-                    return "\r\n";
+                    return Environment.NewLine;
                 case OutputCharacters.H:
                     return "H";
                 case OutputCharacters.E:

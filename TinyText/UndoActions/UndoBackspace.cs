@@ -23,9 +23,9 @@ namespace TinyText.UndoActions
 
         public void Execute()
         {
-            var theLine = _document.TheOutput[_lineNumber];
+            var theLine = _document.Output[_lineNumber];
             theLine.Insert(_position -1,_deletedCharacter);
-            _document.TheOutput[_lineNumber] = theLine;
+            _document.Output[_lineNumber] = theLine;
 
             _document.CursorLineNumber = _lineNumber;
             _document.CursorPosition = _position;

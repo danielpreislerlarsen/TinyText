@@ -40,30 +40,24 @@ namespace TinyText
                 InputTypes.O
             };
 
-            var renderer = new DefaultRenderer();
-
             var outputForRendering = ProcessInputs(inputs);
-
+            var renderer = new DefaultRenderer();
             var documentAsString = renderer.RenderDocument(outputForRendering);
 
             Console.WriteLine(documentAsString);
-
             Console.ReadKey();
         }
 
         public static List<List<OutputCharacters>> ProcessInputs(List<InputTypes> inputs)
         {
-            var renderer = new DefaultRenderer();
-
-            var document = new Document();
+            var inputProcessor = new InputProcessor();
 
             foreach (var input in inputs)
             {
-                document.ProcessInput(input);
-                Console.WriteLine(renderer.RenderDocument(document.TheOutput) + " --- " + input.ToString());
+                inputProcessor.Process(input);
             }
 
-            return document.TheOutput;
+            return inputProcessor.GetOutput;
         }
     }
 }
