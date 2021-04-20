@@ -11,5 +11,14 @@ namespace TinyText
         a,
         b,
         newline,
+        H,
+        E,
+        Y,
+        space,
+        L,
+        O,
+        R,
+        D,
+        W
     }
 }

@@ -31,13 +31,28 @@ namespace TinyText.Renderers
             {
                 case OutputCharacters.a:
                     return "a";
-                    break;
                 case OutputCharacters.b:
                     return "b";
-                    break;
                 case OutputCharacters.newline:
                     return "\r\n";
-                    break;
+                case OutputCharacters.H:
+                    return "H";
+                case OutputCharacters.E:
+                    return "E";
+                case OutputCharacters.Y:
+                    return "Y";
+                case OutputCharacters.space:
+                    return " ";
+                case OutputCharacters.L:
+                    return "L";
+                case OutputCharacters.O:
+                    return "O";
+                case OutputCharacters.R:
+                    return "R";
+                case OutputCharacters.D:
+                    return "D";
+                case OutputCharacters.W:
+                    return "W";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(OutputCharacters), outputCharacter, null);
                     break;

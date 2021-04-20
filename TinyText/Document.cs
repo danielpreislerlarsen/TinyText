@@ -22,6 +22,33 @@ namespace TinyText
                 case InputTypes.b:
                     InsertCharacter(OutputCharacters.b);
                     break;
+                case InputTypes.H:
+                    InsertCharacter(OutputCharacters.H);
+                    break;
+                case InputTypes.E:
+                    InsertCharacter(OutputCharacters.E);
+                    break;
+                case InputTypes.Y:
+                    InsertCharacter(OutputCharacters.Y);
+                    break;
+                case InputTypes.space:
+                    InsertCharacter(OutputCharacters.space);
+                    break;
+                case InputTypes.L:
+                    InsertCharacter(OutputCharacters.L);
+                    break;
+                case InputTypes.O:
+                    InsertCharacter(OutputCharacters.O);
+                    break;
+                case InputTypes.R:
+                    InsertCharacter(OutputCharacters.R);
+                    break;
+                case InputTypes.D:
+                    InsertCharacter(OutputCharacters.D);
+                    break;
+                case InputTypes.W:
+                    InsertCharacter(OutputCharacters.W);
+                    break;
                 case InputTypes.newline:
                     InsertNewline();
                     break;

@@ -10,12 +10,21 @@ namespace TinyText
     {
         a,
         b,
+        H,
+        E,
+        Y,
+        space,
+        L,
+        O,
+        R,
+        D,
+        W,
         newline,
         left,
         right,
         up,
         down,
         backspace,
-        undo
+        undo,
     }
 }
