@@ -137,7 +137,8 @@ namespace TinyText
                 TheOutput.RemoveAt(CursorLineNumber);
 
                 CursorLineNumber--;
-                CursorPosition = TheOutput[CursorLineNumber].Count;
+                //CursorPosition = TheOutput[CursorLineNumber].Count;
+                CursorPosition = previousCursorLineLenght - 1;
 
                 var undoAction = new UndoBackspaceResultingInLineMove(CursorLineNumber, previousCursorLineLenght - 1, this);
                 _undoActions.Add(undoAction);

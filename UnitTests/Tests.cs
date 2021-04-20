@@ -129,6 +129,7 @@ namespace UnitTests
             yield return new object[] { new List<InputTypes> { InputTypes.a, InputTypes.newline, InputTypes.backspace, InputTypes.undo }, $"a{DefaultRenderer.Newline}" };
             yield return new object[] { new List<InputTypes> { InputTypes.a, InputTypes.b, InputTypes.newline, InputTypes.backspace, InputTypes.undo }, $"ab{DefaultRenderer.Newline}" };
             yield return new object[] { new List<InputTypes> { InputTypes.a, InputTypes.newline, InputTypes.b, InputTypes.left, InputTypes.backspace, InputTypes.undo }, $"a{DefaultRenderer.Newline}b" };
+            yield return new object[] { new List<InputTypes> { InputTypes.a, InputTypes.newline, InputTypes.b, InputTypes.left, InputTypes.backspace, InputTypes.backspace }, "b" };
 
             yield return new object[] { new List<InputTypes> { InputTypes.left, InputTypes.undo }, "" };
             yield return new object[] { new List<InputTypes> { InputTypes.left, InputTypes.left, InputTypes.undo }, "" };
@@ -157,6 +158,16 @@ namespace UnitTests
             yield return new object[] { new List<InputTypes> { InputTypes.a, InputTypes.down, InputTypes.undo }, "a" };
             yield return new object[] { new List<InputTypes> { InputTypes.a, InputTypes.newline, InputTypes.down, InputTypes.undo, InputTypes.b }, $"a{DefaultRenderer.Newline}b" };
             yield return new object[] { new List<InputTypes> { InputTypes.a, InputTypes.newline, InputTypes.up, InputTypes.down, InputTypes.undo, InputTypes.b }, $"ba{DefaultRenderer.Newline}" };
+
+            yield return new object[]
+            {
+                new List<InputTypes>
+                {
+                    InputTypes.H, InputTypes.E, InputTypes.Y, InputTypes.space, InputTypes.L, InputTypes.O, InputTypes.R, InputTypes.D,
+                    InputTypes.left, InputTypes.left, InputTypes.left, InputTypes.left, InputTypes.backspace, InputTypes.newline, InputTypes.backspace, InputTypes.backspace,
+                    InputTypes.newline, InputTypes.undo, InputTypes.right, InputTypes.newline, InputTypes.W, InputTypes.right, InputTypes.right, InputTypes.L, InputTypes.up,
+                    InputTypes.L, InputTypes.O }, $"HELLO{DefaultRenderer.Newline}WORLD"
+            };
         }
     }
 }
