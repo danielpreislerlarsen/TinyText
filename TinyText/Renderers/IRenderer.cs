@@ -8,5 +8,6 @@ namespace TinyText.Renderers
 {
     public interface IRenderer
     {
+        string RenderDocument(List<List<OutputCharacters>> output);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TinyText.Renderers;
 
 namespace TinyText
 {
@@ -22,12 +23,27 @@ namespace TinyText
                 InputTypes.backspace
             };
 
-            var document = new DocumentUsingStrings();
+            var renderer = new DefaultRenderer();
 
-            var processedInputs = document.ProcessInputs(inputs);
-            Console.WriteLine(processedInputs);
+            var outputForRendering = ProcessInputs(inputs);
+
+            var documentAsString = renderer.RenderDocument(outputForRendering);
+
+            Console.WriteLine(documentAsString);
 
             Console.ReadKey();
+        }
+
+        public static List<List<OutputCharacters>> ProcessInputs(List<InputTypes> inputs)
+        {
+            var document = new Document();
+
+            foreach (var input in inputs)
+            {
+                document.ProcessInput(input);
+            }
+
+            return document.TheOutput;
         }
     }
 }

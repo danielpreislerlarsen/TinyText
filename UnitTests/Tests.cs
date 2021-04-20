@@ -9,6 +9,8 @@ namespace UnitTests
 {
     public class Tests
     {
+        private readonly IRenderer _renderer = new DefaultRenderer();
+
         [Theory]
         [MemberData(nameof(InputsAndExpectedOutputs))]
         public void Given_inputs_the_expected_output_is_returned(List<InputTypes> inputs, string expectedOutput)
@@ -17,7 +19,13 @@ namespace UnitTests
             var document = new Document();
 
             //Act
-            var actualOutput = document.ProcessInputs(inputs);
+            foreach (var input in inputs)
+            {
+                document.ProcessInput(input);
+            }
+
+            var outputForRendering = document.TheOutput;
+            var actualOutput = _renderer.RenderDocument(outputForRendering);
 
             //Assert
             Assert.Equal(expectedOutput, actualOutput);

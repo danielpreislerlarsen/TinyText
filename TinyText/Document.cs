@@ -1,58 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using TinyText.UndoActions;
 
 namespace TinyText
 {
     public class Document
     {
-        internal readonly List<List<OutputCharacters>> TheOutput = new(){new()}; //TODO find better name
+        public readonly List<List<OutputCharacters>> TheOutput = new(){new()}; //TODO find better name
         internal int CursorLineNumber = 0;
         internal int CursorPosition = 0;
         private readonly List<IUndoAction> _undoActions = new();
-
-        //TODO move the ProcessInputs out
-        public string ProcessInputs(List<InputTypes> inputs)
-        {
-            foreach (var input in inputs)
-            {
-                ProcessInput(input);
-            }
-
-            StringBuilder sb = new();
-            foreach (var documentLine in TheOutput)
-            {
-                foreach (var outputCharacter in documentLine)
-                {
-                    var character = MapToView(outputCharacter);
-                    sb.Append(character);
-                }
-            }
-
-            var document = sb.ToString();
-
-            return document;
-        }
-
-        private string MapToView(OutputCharacters outputCharacter)
-        {
-            switch (outputCharacter)
-            {
-                case OutputCharacters.a:
-                    return "a";
-                    break;
-                case OutputCharacters.b:
-                    return "b";
-                    break;
-                case OutputCharacters.newline:
-                    return "\r\n";
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(OutputCharacters), outputCharacter, null);
-                    break;
-            }
-        }
 
         //TODO Hvordan sikres at enhver handling får registreret sin undoaction?
         public void ProcessInput(InputTypes input)
